@@ -5,6 +5,7 @@ const registerSchema = new mongoose.Schema({
     breed : { type: String , required : true},
     size : { type: String , required : true},
     petinfo : {type : String, required : true},
+    isaccepted : {type: Boolean, default : false},
     image :{
         data : Buffer,
         contentType : String

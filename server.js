@@ -119,6 +119,20 @@ app.post("/petdata", auth, upload.single("image"), async (req, res) => {
     });
 });
 
+app.post("/accept",(req,res)=>{
+  PetData.updateOne({_id : req.body.Dog},{$set : {isaccepted : true}},(err)=>{
+    if (err){
+      console.log(err);
+    }
+    res.redirect("/")
+  })
+})
+app.post("/delete",(req,res)=>{
+  PetData.deleteOne({_id : req.body.Dog},(err)=>{
+  res.redirect("/")
+  })
+})
+
 app.post("/login", (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {

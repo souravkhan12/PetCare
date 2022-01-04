@@ -5,42 +5,58 @@
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <% petdata.forEach((all)=>{%>
-          <div class="col">
-            <div class="card shadow-sm">
-              <!-- <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="../../uploads/alone.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"/> -->
-              <img src="http://localhost:3000/uploads/<%= all.ImageName %>" />
-              <div class="card-body" style="display: flex; flex-direction: row; justify-content: space-around;">
-                <p class="card-text">
-                  <%= all.petinfo %>
-                </p>
-                <% if(user) { %> 
-                  <%if(user.role == "admin"){%>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
-                        
-                        <button
-                          type="button"
-                          class="btn btn-sm btn-outline-secondary"
-                        >
-                          Accept
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-sm btn-outline-secondary" 
-                        >
-                        Delete
-                        </button>
-                      </div>
+          <% if(user) {%>
+            <% if(user.role == "admin"){%>
+              <% if(!all.isaccepted){%>
+                <div class="col">
+                  <div class="card shadow-sm">
+                    <!-- <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="../../uploads/alone.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"/> -->
+                    <img src="http://localhost:3000/uploads/<%= all.ImageName %>" />
+                    <div class="card-body" style="display: flex; flex-direction: row; justify-content: space-around;">
+                      <p class="card-text">
+                        <%= all.petname %>
+                      </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                              <form method="post" action="/accept">
+                                <input type="hidden" value="<%=all.id%>" name="Dog">
+                                <button
+                                type="submit"
+                                class="btn btn-sm btn-outline-secondary"
+                              >
+                                Accept
+                              </button>
+                              </form>
+                              <form method="post" action="/delete">
+                                <input type="hidden" value="<%=all.id%>" name="Dog">
+                                <button
+                                type="submit"
+                                class="btn btn-sm btn-outline-secondary"
+                              >
+                                Delete
+                              </button>
+                              </form>
+                            </div>
+                          </div>
                     </div>
-                  <%}%>
-                <% }else { %>
-                  <a href="/login" class="btn btn-sm btn-outline-secondary">
-                    Please login
-                  </a>
-                  <%}%>
+                  </div>
+                </div>
+                <%}%>
+
+            <%} else {%>
+              <div class="col">
+                <div class="card shadow-sm">
+                  <!-- <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="../../uploads/alone.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"/> -->
+                  <img src="http://localhost:3000/uploads/<%= all.ImageName %>" />
+                  <div class="card-body" style="display: flex; flex-direction: row; justify-content: space-around;">
+                    <p class="card-text">
+                      <%= all.petinfo %>
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+              <%}%>
+          <%}%>
         <%})%>
       </div>
     </div>
