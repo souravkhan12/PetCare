@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id = "navbar" style="margin-top: -47px">
+    <a class="navbar-brand" href="/">PetCare</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+        <% if(user.role == "client") {%>
+          <li class="nav-item">
+            <a class="nav-link" href="/petdata">Add Data</a>
+          </li>
+        <%}%>
+        <% if(user.role == "admin"){%>
+          <li class="nav-item">
+            <a class="nav-link" href="/history">History</a>
+          </li>
+        <%}%>
+        <% if(user) {  %>
+            <form id="logout" action="/logout" method="POST">
+            <a class="nav-link active" aria-current="page" onclick="document.getElementById('logout').submit() " href="#">Sign out </a>
+          </form>
+            <% } else { %>  <a class="nav-link active" aria-current="page" href="/login" >Sign In </a><% } %>
+        </form>
+      </ul>
+    </div>
+  </nav>

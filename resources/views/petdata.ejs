@@ -1,0 +1,59 @@
+<body class="text-center">
+  <main class="form-signin" style="width: 50%; margin-left: 25%">
+    <form action="/petdata" method="post" enctype="multipart/form-data">
+      <h1 class="h3 mb-3 fw-normal">Enter Data</h1>
+
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+          name="petname"
+        />
+        <label for="floatingInput">PetName</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+          name="breed"
+        />
+        <label for="floatingInput">Breed</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+          name="size"
+        />
+        <label for="floatingInput">Size</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+          name="petinfo"
+        />
+        <label for="floatingInput">Enter Info</label>
+      </div>
+      <div class="form-floating">
+        <label for="image" style="padding-left: 20px">Upload Image</label>
+        <input
+          type="file"
+          name="image"
+          id="image"
+          class="form-control-file"
+          style="padding: 20px; padding-top: 50px; margin-right: 100vh"
+        />
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Save</button>
+    </form>
+  </main>
+</body>
